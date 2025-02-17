@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.field {
+  flex-grow: 1;
+  padding: 8px;
+  color: #fff !important;
+}
+
+.btn {
+  max-width: 120px;
+  max-height: 44px;
+}

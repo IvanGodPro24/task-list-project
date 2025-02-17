@@ -1,0 +1,117 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+
+  margin: 3rem auto;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.visible {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0.75rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+  color: white;
+}
+
+.extra-link {
+  font-size: 16px;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.error {
+  color: red;
+}
+
+.link {
+  color: gray;
+}
+
+.login {
+  min-height: 560px;
+  min-width: 405px;
+  margin: 4% auto auto;
+  padding: 60px 60px;
+  background: #505050;
+  box-shadow: 0 30px 60px -5px #000;
+  border-radius: 50px;
+}
+
+.active {
+  border-bottom: 2px solid #1161ed;
+  border-radius: 3px;
+}
+
+h2 {
+  font-size: 22px;
+  display: inline-block;
+
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.login-label {
+  text-transform: uppercase;
+  font-size: 14px;
+  opacity: 0.5;
+  top: -65px;
+  transition: all 0.5s ease-in-out;
+}
+
+.text {
+  display: block;
+  width: 100%;
+
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.auth-btn {
+  background-color: #1161ed;
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  font-size: 14px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  text-transform: uppercase;
+}
+
+.auth-btn:hover {
+  background: #4082f5;
+  box-shadow: 0 4px 35px -5px #4082f5;
+  cursor: pointer;
+}
+
+.auth-btn:focus {
+  outline: none;
+}
