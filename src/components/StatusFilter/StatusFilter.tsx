@@ -3,13 +3,14 @@ import Button from "@mui/material/Button";
 import css from "./StatusFilter.module.css";
 import { setStatusFilter } from "../../redux/filters/filtersSlice";
 import { selectStatusFilter } from "../../redux/filters/selectors";
+import { StatusFilterType } from "../../redux/filters/filters.types";
 
 export const StatusFilter = () => {
   const dispatch = useDispatch();
 
   const filter = useSelector(selectStatusFilter);
 
-  const handleFilterChange = (filter) => dispatch(setStatusFilter(filter));
+  const handleFilterChange = (filter: StatusFilterType) => dispatch(setStatusFilter(filter));
 
   return (
     <div className={css.wrapper}>

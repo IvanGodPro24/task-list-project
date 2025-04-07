@@ -11,7 +11,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { useDispatch } from "react-redux";
 import {
   deleteTask,
   editTask,
@@ -19,9 +18,11 @@ import {
 } from "../../redux/tasks/operations";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useAppDispatch } from "../../redux/store.types";
+import { TaskProps } from "./Task.types";
 
-export const Task = ({ task }) => {
-  const dispatch = useDispatch();
+export const Task = ({ task }: TaskProps) => {
+  const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -80,15 +81,13 @@ export const Task = ({ task }) => {
           <Checkbox
             checked={task.completed}
             onChange={handleToggle}
-            sx={
-              ({ "& .MuiSvgIcon-root": { fontSize: 30 } },
-              {
-                color: blueGrey[800],
-                "&.Mui-checked": {
-                  color: lightBlue[600],
-                },
-              })
-            }
+            sx={{
+              "& .MuiSvgIcon-root": { fontSize: 30 },
+              color: blueGrey[800],
+              "&.Mui-checked": {
+                color: lightBlue[600],
+              },
+            }}
           />
           <p className={css.text}>{task.text}</p>
           <button className={css.btn} onClick={handleEdit}>

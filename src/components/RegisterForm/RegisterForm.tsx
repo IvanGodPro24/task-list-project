@@ -1,11 +1,12 @@
 import { useId, useState } from "react";
 import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { toast } from "sonner";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { RegisterCredentials } from "../../redux/auth/operations.types";
+import { useAppDispatch } from "../../redux/store.types";
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,9 +33,12 @@ const RegisterForm = () => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = ({ name, email, password }, actions) => {
+  const handleSubmit = (
+    { name, email, password }: RegisterCredentials,
+    actions: FormikHelpers<RegisterCredentials>
+  ) => {
     dispatch(register({ name, email, password }));
 
     toast.success("Register success");

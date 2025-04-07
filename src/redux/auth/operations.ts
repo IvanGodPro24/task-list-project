@@ -1,9 +1,15 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  AuthResponse,
+  LoginCredentials,
+  RegisterCredentials,
+} from "./operations.types";
+import { RootState } from "../store.types";
 
 axios.defaults.baseURL = "https://task-manager-api.goit.global/";
 
-const setAuthHeader = (token) => {
+const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -11,7 +17,7 @@ const clearAuthToken = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-export const register = createAsyncThunk(
+export const register = createAsyncThunk<AuthResponse, RegisterCredentials>(
   "auth/register",
   async (user, { rejectWithValue }) => {
     try {
@@ -19,21 +25,21 @@ export const register = createAsyncThunk(
 
       setAuthHeader(response.data.token);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }
 );
 
-export const logIn = createAsyncThunk(
+export const logIn = createAsyncThunk<AuthResponse, LoginCredentials>(
   "auth/login",
   async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post("/users/login", user);
+      const response = await axios.post<AuthResponse>("/users/login", user);
 
       setAuthHeader(response.data.token);
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }
@@ -55,7 +61,7 @@ export const logOut = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
+    const state = getState() as RootState;
     const persistedToken = state.auth.token;
 
     if (!persistedToken) {
@@ -67,7 +73,7 @@ export const refreshUser = createAsyncThunk(
       const response = await axios.get("/users/me");
 
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }

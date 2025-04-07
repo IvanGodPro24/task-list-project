@@ -1,11 +1,12 @@
 import { useId, useState } from "react";
 import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import { toast } from "sonner";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useAppDispatch } from "../../redux/store.types";
+import { LoginCredentials } from "../../redux/auth/operations.types";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Must be a valid email!").required("Required"),
@@ -26,9 +27,12 @@ const LoginForm = () => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = ({ email, password }, actions) => {
+  const handleSubmit = (
+    { email, password }: LoginCredentials,
+    actions: FormikHelpers<LoginCredentials>
+  ) => {
     dispatch(
       logIn({
         email,

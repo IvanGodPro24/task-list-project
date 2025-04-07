@@ -1,7 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectTasks } from "../tasks/selectors";
+import { RootState } from "../store.types";
 
-export const selectStatusFilter = (state) => state.filters.status;
+export const selectStatusFilter = (state: RootState) => state.filters.status;
 
 export const selectVisibleTasks = createSelector(
   [selectTasks, selectStatusFilter],

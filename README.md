@@ -51,21 +51,21 @@ npm run dev
 │   ├── tasks     # Task management
 │   ├── filters   # Filtering
 ├── pages         # Main pages
-├── App.jsx       # Main component
-└── main.jsx      # Entry point
+├── App.tsx       # Main component
+└── main.tsx      # Entry point
 ```
 
 ## 📌 Key Files  
 
-### `redux/auth/authSlice.js`  
+### `redux/auth/authSlice.ts`  
 
 Contains logic for registration, authentication, token storage, and error handling.  
 
-### `redux/tasks/tasksSlice.js`  
+### `redux/tasks/tasksSlice.ts`  
 
 Stores the task list and handles adding, editing, and deleting tasks.  
 
-### `redux/selectors.js`  
+### `redux/selectors.ts`  
 
 Optimized selectors for retrieving data from the `store`.  
 

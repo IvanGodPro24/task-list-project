@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import css from "./UserMenu.module.css";
@@ -6,9 +6,10 @@ import Button from "@mui/material/Button";
 
 import Avatar from "@mui/material/Avatar";
 import { lightBlue } from "@mui/material/colors";
+import { useAppDispatch } from "../../redux/store.types";
 
 const UserMenu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
 
   return (
@@ -16,7 +17,7 @@ const UserMenu = () => {
       <p className={css.user}>Welcome, {user.name}!</p>
       <Avatar
         sx={{ bgcolor: lightBlue[500] }}
-        alt={user.name}
+        alt={user.name ?? undefined}
         src="/broken-image.jpg"
       />
       <Button

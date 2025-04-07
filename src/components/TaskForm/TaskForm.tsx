@@ -1,13 +1,14 @@
 import Button from "@mui/material/Button";
 import css from "./TaskForm.module.css";
 
-import { useDispatch } from "react-redux";
 import { addTask } from "../../redux/tasks/operations";
 import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { TextField } from "formik-mui";
 import { toast } from "sonner";
 import { useId } from "react";
+import { useAppDispatch } from "../../redux/store.types";
+import { TaskFormProps } from "./TaskForm.types";
 
 const TaskSchema = Yup.object().shape({
   text: Yup.string()
@@ -23,9 +24,12 @@ const initialValues = {
 export const TaskForm = () => {
   const textId = useId();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = ({ text }, actions) => {
+  const handleSubmit = (
+    { text }: TaskFormProps,
+    actions: FormikHelpers<TaskFormProps>
+  ) => {
     if (text.trim() === "") {
       toast.error("Task can not be empty!");
       return;

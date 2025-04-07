@@ -1,4 +1,3 @@
-
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import DocumentTitle from "../../DocumentTitle";
 

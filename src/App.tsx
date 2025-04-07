@@ -1,6 +1,6 @@
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
 import Loader from "./components/Loader/Loader";
 import { Routes, Route } from "react-router-dom";
@@ -9,11 +9,12 @@ import RestrictedRoute from "./RestrictedRoute";
 import { Toaster } from "sonner";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import { useAppDispatch } from "./redux/store.types";
 
 const pages = {
   HomePage: lazy(() => import("./pages/HomePage/HomePage")),
-  RegistrationPage: lazy(() =>
-    import("./pages/RegistrationPage/RegistrationPage")
+  RegistrationPage: lazy(
+    () => import("./pages/RegistrationPage/RegistrationPage")
   ),
   LoginPage: lazy(() => import("./pages/LoginPage/LoginPage")),
   TasksPage: lazy(() => import("./pages/TasksPage/TasksPage")),
@@ -21,7 +22,7 @@ const pages = {
 };
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
