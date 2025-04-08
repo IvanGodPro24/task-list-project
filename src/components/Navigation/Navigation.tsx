@@ -1,4 +1,5 @@
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual } from "react-redux";
+import { useAppSelector } from "../../hooks";
 import { NavLink } from "react-router-dom";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import css from "./Navigation.module.css";
@@ -9,7 +10,7 @@ import UserMenu from "../UserMenu/UserMenu";
 import AuthNav from "../AuthNav/AuthNav";
 
 const Navigation = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn, shallowEqual);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn, shallowEqual);
 
   return (
     <AppBar

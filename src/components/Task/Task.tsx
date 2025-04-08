@@ -18,7 +18,7 @@ import {
 } from "../../redux/tasks/operations";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useAppDispatch } from "../../redux/store.types";
+import { useAppDispatch } from "../../hooks";
 import { TaskProps } from "./Task.types";
 
 export const Task = ({ task }: TaskProps) => {

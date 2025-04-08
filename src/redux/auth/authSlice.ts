@@ -1,5 +1,5 @@
-import { AuthState } from "./auth.types";
-import { createSlice } from "@reduxjs/toolkit";
+import { AuthState, User } from "./auth.types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { logIn, logOut, refreshUser, register } from "./operations";
 
 const handleAuthentication = (
@@ -40,7 +40,7 @@ const slice = createSlice({
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
+      .addCase(refreshUser.fulfilled, (state, action: PayloadAction<User>) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;

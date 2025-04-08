@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
 import { TaskForm } from "../../components/TaskForm/TaskForm";
@@ -7,13 +6,13 @@ import { selectIsLoading, selectError } from "../../redux/tasks/selectors";
 import { fetchTasks } from "../../redux/tasks/operations";
 import { AppBar } from "../../components/AppBar/AppBar";
 import DocumentTitle from "../../DocumentTitle";
-import { useAppDispatch } from "../../redux/store.types";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const TasksPage = () => {
   const dispatch = useAppDispatch();
 
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isLoading = useAppSelector(selectIsLoading);
+  const error = useAppSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchTasks());

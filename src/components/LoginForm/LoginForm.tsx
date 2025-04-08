@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { logIn } from "../../redux/auth/operations";
 import { toast } from "sonner";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useAppDispatch } from "../../redux/store.types";
+import { useAppDispatch } from "../../hooks";
 import { LoginCredentials } from "../../redux/auth/operations.types";
 
 const LoginSchema = Yup.object().shape({

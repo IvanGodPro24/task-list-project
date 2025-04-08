@@ -6,6 +6,7 @@ import {
   RegisterCredentials,
 } from "./operations.types";
 import { RootState } from "../store.types";
+import { User } from "./auth.types";
 
 axios.defaults.baseURL = "https://task-manager-api.goit.global/";
 
@@ -35,7 +36,7 @@ export const logIn = createAsyncThunk<AuthResponse, LoginCredentials>(
   "auth/login",
   async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post<AuthResponse>("/users/login", user);
+      const response = await axios.post("/users/login", user);
 
       setAuthHeader(response.data.token);
       return response.data;
@@ -45,7 +46,7 @@ export const logIn = createAsyncThunk<AuthResponse, LoginCredentials>(
   }
 );
 
-export const logOut = createAsyncThunk(
+export const logOut = createAsyncThunk<void, void>(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
@@ -58,7 +59,7 @@ export const logOut = createAsyncThunk(
   }
 );
 
-export const refreshUser = createAsyncThunk(
+export const refreshUser = createAsyncThunk<User, void>(
   "auth/refresh",
   async (_, { rejectWithValue, getState }) => {
     const state = getState() as RootState;

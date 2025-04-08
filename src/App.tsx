@@ -1,6 +1,5 @@
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
-import { useSelector } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
 import Loader from "./components/Loader/Loader";
 import { Routes, Route } from "react-router-dom";
@@ -9,7 +8,7 @@ import RestrictedRoute from "./RestrictedRoute";
 import { Toaster } from "sonner";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
-import { useAppDispatch } from "./redux/store.types";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 const pages = {
   HomePage: lazy(() => import("./pages/HomePage/HomePage")),
@@ -23,7 +22,7 @@ const pages = {
 
 export const App = () => {
   const dispatch = useAppDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const isRefreshing = useAppSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());

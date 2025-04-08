@@ -86,11 +86,11 @@ const slice = createSlice({
         state.error = null;
       })
 
-      .addMatcher((action) => {
+      .addMatcher((action: PayloadAction<string>) => {
         return action.type.endsWith("pending");
       }, handlePending)
 
-      .addMatcher((action) => {
+      .addMatcher((action: PayloadAction<string>) => {
         return action.type.endsWith("rejected");
       }, handleRejected);
   },

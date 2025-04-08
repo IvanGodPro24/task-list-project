@@ -1,8 +1,7 @@
+import { User } from "./auth.types";
+
 export type AuthResponse = {
-  user: {
-    name: string;
-    email: string;
-  };
+  user: User;
   token: string;
 };
 

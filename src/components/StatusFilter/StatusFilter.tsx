@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import Button from "@mui/material/Button";
 import css from "./StatusFilter.module.css";
 import { setStatusFilter } from "../../redux/filters/filtersSlice";
@@ -6,9 +6,9 @@ import { selectStatusFilter } from "../../redux/filters/selectors";
 import { StatusFilterType } from "../../redux/filters/filters.types";
 
 export const StatusFilter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const filter = useSelector(selectStatusFilter);
+  const filter = useAppSelector(selectStatusFilter);
 
   const handleFilterChange = (filter: StatusFilterType) => dispatch(setStatusFilter(filter));
 

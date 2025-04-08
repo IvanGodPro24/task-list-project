@@ -7,7 +7,7 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { TextField } from "formik-mui";
 import { toast } from "sonner";
 import { useId } from "react";
-import { useAppDispatch } from "../../redux/store.types";
+import { useAppDispatch } from "../../hooks";
 import { TaskFormProps } from "./TaskForm.types";
 
 const TaskSchema = Yup.object().shape({

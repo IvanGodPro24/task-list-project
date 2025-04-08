@@ -6,7 +6,7 @@ import { register } from "../../redux/auth/operations";
 import { toast } from "sonner";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RegisterCredentials } from "../../redux/auth/operations.types";
-import { useAppDispatch } from "../../redux/store.types";
+import { useAppDispatch } from "../../hooks";
 
 const RegistrationSchema = Yup.object().shape({
   name: Yup.string()
